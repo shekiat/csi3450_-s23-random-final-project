@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Greetings CSI3450 Database Management and Design</title>
+  <!-- 
+      Mermaid documentation:
+     https://mermaid.js.org/syntax/entityRelationshipDiagram.html
+  -->
+  
+  <!-- Load Mermaid CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.css">
+
+  <link rel="stylesheet" href="css/diag.css">
+
+</head>
+<body>
+
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs' 
+  </script>  
+
+  <!-- Initialize Mermaid -->
+  <script>
+    // Use the 'mermaid' global object to initialize the diagram
+    mermaid.initialize({
+      startOnLoad: true,
+      sequence: { showSequenceNumbers: true },
+    });
+</script>
+
+<section>
+
+<h1 style="text-align: center;">TEC Company</h1>
+
+
+
+<!-- 
+Sample taken from DatabaseAnswers.org 
+https://datamodels.databases.biz
+-->
+ 
+ <div class="mermaid" style="text-align: center">
+
+---
+title: Order example
+---
+erDiagram
+   
+    CANDIDATES { 
+        INT CAN_NUM PK
+        
+    }
+
+    JOB_HISTORY { 
+        INT JH_CODE PK
+	INT CAN_NUM FK        
+    }
+    
+    QUALIFICATIONS { 
+    	INT Q_CODE PK
+    	INT CRS_CODE FK
+    }
+    
+    COURSE { 
+    	INT CRS_CODE PK
+    	INT Q_CODE FK
+    }
+    
+    TRAINING_SESSIONS { 
+    	INT TS_CODE PK
+    	INT CRS_CODE FK
+    }
+   
+    OPENINGS { 
+    	INT OPEN_CODE PK
+    	
+    }
+    
+    COMPANIES { 
+    	INT CMP_CODE PK 
+    	STRING CMP_NAME
+    }
+    
+    BRIDGE_CAN_Q {
+    	INT CAN_NUM PK, FK
+    	INT Q_CODE PK, FK
+    }
+    
+     BRIDGE_CAN_CRS {
+     	INT CAN_NUM PK, FK
+     	INT CRS_CODE PK, FK
+     }
+    
+     BRIDGE_CAN_OPEN {
+     	INT CAN_NUM PK, FK
+     	INT OPEN_CODE PK, FK
+     }
+    
+    BRIDGE_CAN_TS {
+    	INT CAN_NUM PK, FK
+    	INT TS_CODE PK, FK
+    }
+    
+    BRIDGE_OPEN_CMP {
+    	INT OPEN_CODE PK, FK
+    	INT CMP_CODE PK, FK
+    }
+
+JOB_HISTORY }o--|| CANDIDATES : ""
+
+TRAINING_SESSIONS }o--|| COURSE : ""
+
+JOB_HISTORY }o--|| CANDIDATES : ""
+
+COURSE ||--|| QUALIFICATIONS : ""
+
+BRIDGE_CAN_Q }o--|| CANDIDATES : ""
+
+BRIDGE_CAN_CRS }o--|| CANDIDATES : ""
+
+BRIDGE_CAN_OPEN }o--|| CANDIDATES : ""
+
+BRIDGE_CAN_TS }o--|| CANDIDATES : ""
+
+BRIDGE_CAN_Q }o--|| QUALIFICATIONS : ""
+
+BRIDGE_CAN_CRS }o--|| COURSE : ""
+
+BRIDGE_CAN_OPEN }o--|| OPENINGS : ""
+
+BRIDGE_CAN_TS }o--|| TRAINING_SESSIONS : ""
+
+BRIDGE_OPEN_CMP }o--|| OPENINGS : ""
+
+BRIDGE_OPEN_CMP }o--|| COMPANIES : ""
+
+</div>
+ 
+<br>
+
+
+
+ <div class="mermaid" style="text-align: center">
+sequenceDiagram
+    
+
+
+</div>
+
+
+  
+</section>
+
+</body>
+</html>
