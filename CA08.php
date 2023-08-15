@@ -23,14 +23,14 @@ $pass = "";
 $db = "";
 
 $con=mysqli_connect($server,$userName,$pass,$db);
-$query = "CREATE DATABASE IF NOT EXISTS CA08_DB";
+$query = "CREATE DATABASE IF NOT EXISTS TEC_COMPANY";
 mysqli_query($con, $query);
 mysqli_close($con);
 
 $server = "localhost";
 $userName = "root";
 $pass = "";
-$db = "CA08_DB";
+$db = "TEC_COMPANY";
 
 //create connection
 $con=mysqli_connect($server,$userName,$pass,$db);
@@ -40,21 +40,21 @@ if (mysqli_connect_errno())
 echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
 
-$query = "CREATE DATABASE IF NOT EXISTS CA08_DB";
+$query = "CREATE DATABASE IF NOT EXISTS TEC_COMPANY";
 mysqli_query($con, $query);
 
-$query = "CREATE TABLE IF NOT EXISTS CA08_TABLE(
-name varchar(256),
-email varchar(256),
-age INT
-)";
+$query = "CREATE TABLE IF NOT EXISTS QUALIFICATIONS(
+Q_CODE INT PRIMARY KEY AUTO_INCREMENT,
+Q_DESC VARCHAR(30)
+);";
 mysqli_query($con, $query);
 
 $Tquery = "SELECT * FROM CA08_TABLE";
 $data_check = mysqli_query($con, $Tquery);
 $data_check_val = mysqli_num_rows($data_check);
-//echo $data_check_val;
-if($data_check_val == 0)
+
+//dosent enter values if not empty
+if($data_check_val == 0) 
 {
 mysqli_query($con,"INSERT INTO CA08_TABLE(name, email, age) VALUES ('Jhon Dimagio','voiceactor@futurama.net','54')");
 mysqli_query($con,"INSERT INTO CA08_TABLE(name, email, age) VALUES ('Peter Cullen','theraloptimusprime@gmail.com','80')");
