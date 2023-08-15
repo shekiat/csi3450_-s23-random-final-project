@@ -49,21 +49,26 @@ Q_DESC VARCHAR(30)
 );";
 mysqli_query($con, $query);
 
-$Tquery = "SELECT * FROM CA08_TABLE";
+$Tquery = "SELECT * FROM QUALIFICATIONS";
 $data_check = mysqli_query($con, $Tquery);
 $data_check_val = mysqli_num_rows($data_check);
 
 //dosent enter values if not empty
 if($data_check_val == 0) 
 {
-mysqli_query($con,"INSERT INTO CA08_TABLE(name, email, age) VALUES ('Jhon Dimagio','voiceactor@futurama.net','54')");
-mysqli_query($con,"INSERT INTO CA08_TABLE(name, email, age) VALUES ('Peter Cullen','theraloptimusprime@gmail.com','80')");
-mysqli_query($con,"INSERT INTO CA08_TABLE(name, email, age) VALUES ('Dante Basco','zuko@gmail.com','42')");
-mysqli_query($con,"INSERT INTO CA08_TABLE(name, email, age) VALUES ('Arthur Dent','guidetothegalaxy@hitchhikers.net','42')");
-mysqli_query($con,"INSERT INTO CA08_TABLE(name, email, age) VALUES ('Tyber Zahn','corruption@syndicate.net','63')");
-mysqli_query($con,"INSERT INTO CA08_TABLE(name, email, age) VALUES ('Ted Bundy','bundy@serialkillers.com','69')");
-mysqli_query($con,"INSERT INTO CA08_TABLE(name, email, age) VALUES ('Jeffery Dahmer','jeff@serialkillers.com','54')");
-mysqli_query($con,"INSERT INTO CA08_TABLE(name, email, age) VALUES ('J.G. Wentworth','themostanoyingcommercial@877cashnow.net','69')");
+  INSERT INTO QUALIFICATIONS VALUES ('SEC-45', 'Secretarial work; candidate must type at least 45 words per minute');	
+  INSERT INTO QUALIFICATIONS VALUES ('SEC-60', 'Secretarial work; candidate must type at least 60 words per minute');
+  INSERT INTO QUALIFICATIONS VALUES ('SEC-45', 'Secretarial work; candidate must type at least 45 words per minute');
+  INSERT INTO QUALIFICATIONS VALUES ('CLERK', 'General clerkin work');	
+  INSERT INTO QUALIFICATIONS VALUES ('PRG-PY', 'Programmer, Python');
+  INSERT INTO QUALIFICATIONS VALUES ('PRG-C+++', 'Programmer, C++');
+  INSERT INTO QUALIFICATIONS VALUES ('DBA-ORA', 'Database Administrator, Oracle');
+  INSERT INTO QUALIFICATIONS VALUES ('DBA-DB2', 'Database Administrator, IBM DB2');
+  INSERT INTO QUALIFICATIONS VALUES ('DBA-SQLSERV', 'Database Administrator, MS SQL Server');
+  INSERT INTO QUALIFICATIONS VALUES ('SYS-1', 'Systems Analyst, Level 1');
+  INSERT INTO QUALIFICATIONS VALUES ('SYS-2', 'Systems Analyst, Level 2');
+  INSERT INTO QUALIFICATIONS VALUES ('NW-CIS', 'Network Administrator, Cisco experience');
+  INSERT INTO QUALIFICATIONS VALUES ('WD-CF', 'Web Developer, ColdFusion');
 }
 
 $SQL_Search = "$_GET[value1]";
