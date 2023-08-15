@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>A PHP Script for Testing the GET Protocol</title>
+    <title>TEC Hiring Database</title>
   </head>
   <body>
     <?php
