@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
     <title>User Data Entry Form</title>
 </head>
 <body>
@@ -8,36 +9,201 @@
     <form  method="get" action="Final.php">
     
   	<label for="name">Coulumn:</label>
-	<input type="radio" id="CANDIDATES" name="value2" value="CANDIDATES">candidates
-	<input type="radio" id="JOB_HISTORY" name="value2" value="JOB_HISTORY">job history
-	<input type="radio" id="QUALIFICATIONS" name="value2" value="QUALIFICATIONS">qualifications 
-	<input type="radio" id="COURSE" name="value2" value="COURSE">course
-	<input type="radio" id="TRAINING_SESSIONS" name="value2" value="TRAINING_SESSIONS">traning sessions
-	<input type="radio" id="OPENINGS" name="value2" value="OPENINGS">openings
-	<input type="radio" id="PLACEMENT" name="value2" value="PLACEMENT">placement
-	<input type="radio" id="COMPANIES" name="value2" value="COMPANIES">companies
-	<input type="radio" id="QUALIFIED_CANIDATES" name="value2" value="QUALIFIED_CANIDATES">qualified candidates 
-	<input type="radio" id="COURSE_ENROLEMENT" name="value2" value="COURSE_ENROLEMENT">course enrolement
-	<input type="radio" id="FILLED_OPENINGS" name="value2" value="FILLED_OPENINGS">filled openings
-	<input type="radio" id="SESSION_ENROLEMENT" name="value2" value="SESSION_ENROLEMENT">session enrolement 
-	<input type="radio" id="COMPANY_OPENINGS" name="value2" value="COMPANY_OPENINGS">company openings <br><br>
+	<input type="radio" id="CANDIDATES" onclick="myFunction()" name="value2" value="CANDIDATES">candidates
+		
+	<input type="radio" id="JOB_HISTORY" onclick="myFunction()" name="value2" value="JOB_HISTORY">job history
+	
+	<input type="radio" id="QUALIFICATIONS" onclick="myFunction()" name="value2" value="QUALIFICATIONS">qualifications 
+	
+	<input type="radio" id="COURSE" onclick="myFunction()" name="value2" value="COURSE">course
+	
+	<input type="radio" id="TRAINING_SESSIONS" onclick="myFunction()" name="value2" value="TRAINING_SESSIONS">traning sessions
+	
+	<input type="radio" id="OPENINGS" onclick="myFunction()" name="value2" value="OPENINGS">openings
+	
+	<input type="radio" id="PLACEMENT" onclick="myFunction()" name="value2" value="PLACEMENT">placement
+	
+	<input type="radio" id="COMPANIES" onclick="myFunction()" name="value2" value="COMPANIES">companies
+	
+	<input type="radio" id="QUALIFIED_CANIDATES" onclick="myFunction()" name="value2" value="QUALIFIED_CANIDATES">qualified candidates 
+	
+	<input type="radio" id="COURSE_ENROLEMENT" onclick="myFunction()" name="value2" value="COURSE_ENROLEMENT">course enrolement
+	
+	<input type="radio" id="FILLED_OPENINGS" onclick="myFunction()" name="value2" value="FILLED_OPENINGS">filled openings
+	
+	<input type="radio" id="SESSION_ENROLEMENT" onclick="myFunction()" name="value2" value="SESSION_ENROLEMENT">session enrolement 
+	
+	<input type="radio" id="COMPANY_OPENINGS" onclick="myFunction()" name="value2" value="COMPANY_OPENINGS">company openings
+	
+	 <br><br>
+	 
+	<!-- Attributes for Candidates -->
+	<input type="checkbox" id="CAN_CAN_NUM" style="display:none" name="value3" value="CAN_NUM" >
+	<p id="text1" style="display:none">CAN_NUM</p>
+	 
+	 <input type="checkbox" id="CAN_CAN_FNAME" style="display:none" name="value3" value="CAN_FNAME" >
+	<p id="text2" style="display:none">CAN_FNAME</p>
+	
+	 <input type="checkbox" id="CAN_CAN_MNAME" style="display:none" name="value3" value="CAN_MNAME" >
+	<p id="text3" style="display:none">CAN_MNAME</p>
+	 
+	 <input type="checkbox" id="CAN_CAN_LNAME" style="display:none" name="value3" value="CAN_LNAME" >
+	<p id="text4" style="display:none">CAN_LNAME</p>
+	 
+	 <input type="checkbox" id="CAN_Q_CODE" style="display:none" name="value3" value="Q_CODE" >
+	<p id="text5" style="display:none">Q_CODE</p>
+	
+	 <input type="checkbox" id="CAN_JH_CODE" style="display:none" name="value3" value="JH_CODE" >
+	<p id="text6" style="display:none">JH_CODE</p>
+	
+	 <input type="checkbox" id="CAN_OPEN_CODE" style="display:none" name="value3" value="OPEN_CODE" >
+	<p id="text7" style="display:none">OPEN_CODE</p>
+	
+	
+	<!-- Attributes for Job History -->
+	<input type="checkbox" id="JH_JH_CODE" style="display:none" name="value3" value="JH_CODE" >
+	<p id="texta1" style="display:none">JH_CODE</p>
+	
+	<input type="checkbox" id="JH_CAN_NUM" style="display:none" name="value3" value="CAN_NUM" >
+	<p id="texta2" style="display:none">CAN_NUM</p>
+	 
+	 <input type="checkbox" id="JH_CAN_FNAME" style="display:none" name="value3" value="CAN_FNAME" >
+	<p id="texta3" style="display:none">CAN_FNAME</p>
+	
+	 <input type="checkbox" id="JH_CAN_MNAME" style="display:none" name="value3" value="CAN_MNAME" >
+	<p id="texta4" style="display:none">CAN_MNAME</p>
+	 
+	 <input type="checkbox" id="JH_CAN_LNAME" style="display:none" name="value3" value="CAN_LNAME" >
+	<p id="texta5" style="display:none">CAN_LNAME</p>
+	 
+	 <input type="checkbox" id="JH_JH_START_DATE" style="display:none" name="value3" value="JH_START_DATE" >
+	<p id="texta6" style="display:none">JH_START_DATE</p>
+	
+	<input type="checkbox" id="JH_JH_END_DATE" style="display:none" name="value3" value="JH_END_DATE" >
+	<p id="texta7" style="display:none">JH_END_DATE</p>
+	
+	 <input type="checkbox" id="JH_JH_HOURLY_PAY" style="display:none" name="value3" value="JH_HOURLY_PAY" >
+	<p id="texta8" style="display:none">JH_HOURLY_PAY</p>
+	
+	 <input type="checkbox" id="JH_OPEN_CODE" style="display:none" name="value3" value="OPEN_CODE" >
+	<p id="texta9" style="display:none">OPEN_CODE</p>
+	
+
+	<!-- Attributes for Qualifications -->
+	<input type="checkbox" id="Q_Q_CODE" style="display:none" name="value3" value="Q_CODE" >
+	<p id="textb1" style="display:none">Q_CODE</p>
+	
+	<input type="checkbox" id="Q_Q_DESC" style="display:none" name="value3" value="Q_DESC" >
+	<p id="textb2" style="display:none">Q_DESC</p>
+	
+	
+	<!-- Attributes for COURSE -->
+	<input type="checkbox" id="CRS_CRS_CODE" style="display:none" name="value3" value="CRS_CODE" >
+	<p id="textc1" style="display:none">CRS_CODE</p>
+	
+	<input type="checkbox" id="CRS_Q_CODE" style="display:none" name="value3" value="Q_CODE" >
+	<p id="textc2" style="display:none">Q_CODE</p>
+	 
+	 <input type="checkbox" id="CRS_CAN_NUM" style="display:none" name="value3" value="CAN_NUM" >
+	<p id="textc3" style="display:none">CAN_NUM</p>
+	
+	 <input type="checkbox" id="CRS_CRS_FEE" style="display:none" name="value3" value="CRS_FEE" >
+	<p id="textc4" style="display:none">CRS_FEE</p>
+	
+	
+	<!-- Attributes for TRAINING_SESSIONS -->
+	<input type="checkbox" id="TS_TS_CODE" style="display:none" name="value3" value="TS_CODE" >
+	<p id="textd1" style="display:none">TS_CODE</p>
+	
+	<input type="checkbox" id="TS_CAN_NUM" style="display:none" name="value3" value="CAN_NUM" >
+	<p id="textd2" style="display:none">CAN_NUM</p>
+
+
+	<!-- Attributes for OPENINGS -->
+	<input type="checkbox" id="OPEN_OPEN_CODE" style="display:none" name="value3" value="OPEN_CODE" >
+	<p id="texte1" style="display:none">OPEN_CODE</p>
+	
+	<input type="checkbox" id="OPEN_CMP_CODE" style="display:none" name="value3" value="CMP_CODE" >
+	<p id="texte2" style="display:none">CMP_CODE</p>	
+
+
+	<!-- Attributes for PLACEMENT -->
+	<input type="checkbox" id="PL_OPEN_CODE" style="display:none" name="value3" value="OPEN_CODE" >
+	<p id="textf1" style="display:none">OPEN_CODE</p>
+	
+	<input type="checkbox" id="PL_CAN_NUM" style="display:none" name="value3" value="CAN_NUM" >
+	<p id="textf2" style="display:none">CAN_NUM</p>
+	 
+	 <input type="checkbox" id="PL_JH_CODE" style="display:none" name="value3" value="JH_CODE" >
+	<p id="textf3" style="display:none">JH_CODE</p>
+	
+	 <input type="checkbox" id="PL_PL_TOTAL_HOURS" style="display:none" name="value3" value="PL_TOTAL_HOURS" >
+	<p id="textf4" style="display:none">PL_TOTAL_HOURS</p>
+	 
+	 <input type="checkbox" id="PL_CMP_NAME" style="display:none" name="value3" value="CMP_NAME" >
+	<p id="textf5" style="display:none">CMP_NAME</p>
+
+    
+    	<!-- Attributes for COMPANIES -->
+	<input type="checkbox" id="CMP_CMP_CODE" style="display:none" name="value3" value="CMP_CODE" >
+	<p id="textg1" style="display:none">CMP_CODE</p>
+	
+	<input type="checkbox" id="CMP_CMP_NAME" style="display:none" name="value3" value="CMP_NAME" >
+	<p id="textg2" style="display:none">CMP_NAME</p>
+	
+	<!-- Attributes for QUALIFIED_CANIDATES -->
+	<input type="checkbox" id="QC_CAN_NUM" style="display:none" name="value3" value="CAN_NUM" >
+	<p id="texth1" style="display:none">CAN_NUM</p>
+	
+	<input type="checkbox" id="QC_Q_CODE" style="display:none" name="value3" value="Q_CODE" >
+	<p id="texth2" style="display:none">Q_CODE</p>
+	
+	<!-- Attributes for COURSE_ENROLEMENT -->
+	<input type="checkbox" id="CE_CAN_NUM" style="display:none" name="value3" value="CAN_NUM" >
+	<p id="texti1" style="display:none">CAN_NUM</p>
+	
+	<input type="checkbox" id="CE_CRS_CODE" style="display:none" name="value3" value="CRS_CODE" >
+	<p id="texti2" style="display:none">CRS_CODE</p>
+	
+	<!-- Attributes for SESSION_ENROLEMENT -->
+	<input type="checkbox" id="SE_CAN_NUM" style="display:none" name="value3" value="CAN_NUM" >
+	<p id="textj1" style="display:none">CAN_NUM</p>
+	
+	<input type="checkbox" id="SE_TS_CODE" style="display:none" name="value3" value="TS_CODE" >
+	<p id="textj2" style="display:none">TS_CODE</p>
+	
+	<!-- Attributes for FILLED_OPENINGS -->
+	<input type="checkbox" id="FO_CAN_NUM" style="display:none" name="value3" value="CAN_NUM" >
+	<p id="textl1" style="display:none">CAN_NUM</p>
+	
+	<input type="checkbox" id="FO_OPEN_CODE" style="display:none" name="value3" value="OPEN_CODE" >
+	<p id="textl2" style="display:none">OPEN_CODE</p>
+	
+	<!-- Attributes for COMPANY_OPENINGS -->
+	<input type="checkbox" id="CO_OPEN_CODE" style="display:none" name="value3" value="OPEN_CODE" >
+	<p id="textk1" style="display:none">OPEN_CODE</p>
+	
+	<input type="checkbox" id="CO_CMP_CODE" style="display:none" name="value3" value="CMP_CODE" >
+	<p id="textk2" style="display:none">CMP_CODE</p>
+    
     
         <label for="name">search:</label>
         <input type="text" id="search" name="value1" required><br><br>
 
+        <input type="submit" value="Submit">
+        
+    </form>
+    
+      <script src="/WEB/Final.js">
+   	
+   </script>
+   
+   
+</body>
+
+
+
+</html>
+
 	
 
-  <!--      <label for="email">Email:</label>
-        <input type="text" id="email" name="value2" required><br><br>
-
-        <label for="age">Age:</label>
-        <input type="number" id="age" name="value3" required><br><br>
-
-      -->  
-
-       
-
-        <input type="submit" value="Submit">
-    </form>
-</body>
-</html>

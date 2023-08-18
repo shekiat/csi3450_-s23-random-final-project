@@ -129,10 +129,10 @@ mysqli_query($con, $query);
 
 $query = "CREATE TABLE IF NOT EXISTS FILLED_OPENINGS(
 CAN_NUM INT,
-TS_CODE INT,
+OPEN_CODE INT,
 PRIMARY KEY (CAN_NUM, OPEN_CODE),
 FOREIGN KEY (CAN_NUM) REFERENCES CANDIDATES (CAN_NUM),
-FOREIGN KEY (OPEN_CODE) REFERENCES OPENINGS (TS_CODE)
+FOREIGN KEY (OPEN_CODE) REFERENCES OPENINGS (OPEN_CODE)
 );";
 mysqli_query($con, $query);
 
@@ -199,7 +199,7 @@ mysqli_query($con, $query);
 $Tquery = "SELECT * FROM QUALIFICATIONS";
 $data_check = mysqli_query($con, $Tquery);
 $data_check_val = mysqli_num_rows($data_check);
-echo "$data_check_val";
+//echo "$data_check_val";
 
 //dosent enter values if not empty
 if($data_check_val == 0) 
@@ -222,10 +222,13 @@ if($data_check_val == 0)
 
 $SQL_Search = "$_GET[value1]";
 $SQL_TABLE = "$_GET[value2]";
+$SQL_ATTRIBUTE = "$_GET[value3]";
 
 echo "<h2>You've Searched For $SQL_Search. <br>";
 echo "<h2>From Catergory $_GET[value2]. <br>";
-$Squery = "SELECT * FROM $SQL_TABLE CA08_TABLE WHERE Q_CODE LIKE '%$_GET[value1]%'";
+echo "<h2>With Coulmns $SQL_ATTRIBUTE <br>";
+
+$Squery = "SELECT * FROM $SQL_TABLE CA08_TABLE WHERE $SQL_ATTRIBUTE LIKE '%$_GET[value1]%'";
 $Search = mysqli_query($con,$Squery);
 
 switch($SQL_TABLE){
@@ -240,75 +243,75 @@ switch($SQL_TABLE){
      case "COURSE":
 	while($row = mysqli_fetch_assoc($Search)) { 
 	echo "<br>  Qualification Code: " . $row["Q_CODE"] . "<br>";
-	echo "Qualification Description: " . $row["CAN_NUM"] . "<br>";
-	echo "Qualification Description: " . $row["CRS_FEE"] . "<br>";
+	echo "Candidate Number: " . $row["CAN_NUM"] . "<br>";
+	echo "Course Fee: " . $row["CRS_FEE"] . "<br>";
 	}
      break;
      	
      case "CANDIDATES":
 	while($row = mysqli_fetch_assoc($Search)) { 
-	echo "<br>  Qualification Code: " . $row["CAN_NUM"] . "<br>";
-	echo "Qualification Description: " . $row["CAN_FNAME"] . "<br>";
-	echo "Qualification Description: " . $row["CAN_MNAME"] . "<br>";
-	echo "Qualification Description: " . $row["CAN_LNAME"] . "<br>";
-	echo "Qualification Description: " . $row["Q_CODE"] . "<br>";
-	echo "Qualification Description: " . $row["JH_CODE"] . "<br>";
-	echo "Qualification Description: " . $row["OPEN_CODE"] . "<br>";
+	echo "<br>  Candidate Code: " . $row["CAN_NUM"] . "<br>";
+	echo "Candidate First Name: " . $row["CAN_FNAME"] . "<br>";
+	echo "Candidate Middle Name: " . $row["CAN_MNAME"] . "<br>";
+	echo "Candidate Last Name: " . $row["CAN_LNAME"] . "<br>";
+	echo "Qualification Code: " . $row["Q_CODE"] . "<br>";
+	echo "Job History Code: " . $row["JH_CODE"] . "<br>";
+	echo "Opening Code: " . $row["OPEN_CODE"] . "<br>";
 	}
      break;	
      
      case "JOB_HISTORY":
 	while($row = mysqli_fetch_assoc($Search)) { 
-	echo "<br>  Qualification Code: " . $row["JH_CODE"] . "<br>";
-	echo "Qualification Description: " . $row["CAN_NUM"] . "<br>";
-	echo "Qualification Description: " . $row["CAN_LNAME"] . "<br>";
-	echo "Qualification Description: " . $row["JH_START_DATE"] . "<br>";
-	echo "Qualification Description: " . $row["JH_END_DATE"] . "<br>";
-	echo "Qualification Description: " . $row["JH_HOURLY_PAY"] . "<br>";
-	echo "Qualification Description: " . $row["OPEN_CODE"] . "<br>";
+	echo "<br>  Job History Code: " . $row["JH_CODE"] . "<br>";
+	echo "Candidate Number: " . $row["CAN_NUM"] . "<br>";
+	echo "Candidate Last Name: " . $row["CAN_LNAME"] . "<br>";
+	echo "Job Start Date: " . $row["JH_START_DATE"] . "<br>";
+	echo "Job End Date: " . $row["JH_END_DATE"] . "<br>";
+	echo "Job Hourly Pay: " . $row["JH_HOURLY_PAY"] . "<br>";
+	echo "Opening Code: " . $row["OPEN_CODE"] . "<br>";
 	}
      break;
      	
      case "TRAINING_SESSIONS":
 	while($row = mysqli_fetch_assoc($Search)) { 
-	echo "<br>  Qualification Code: " . $row["TS_CODE"] . "<br>";
-	echo "Qualification Description: " . $row["CRS_CODE"] . "<br>";
-	echo "Qualification Description: " . $row["CAN_NUM"] . "<br>";
+	echo "<br>  Traning Session Code: " . $row["TS_CODE"] . "<br>";
+	echo "Course Code: " . $row["CRS_CODE"] . "<br>";
+	echo "Candidate Number: " . $row["CAN_NUM"] . "<br>";
 	}
      break;	
      
      case "QUALIFIED_CANIDATES":
 	while($row = mysqli_fetch_assoc($Search)) { 
-	echo "<br>  Qualification Code: " . $row["CAN_NUM"] . "<br>";
-	echo "Qualification Description: " . $row["Q_CODE"] . "<br>";
+	echo "<br>  Candidate Number: " . $row["CAN_NUM"] . "<br>";
+	echo "Qualification Code: " . $row["Q_CODE"] . "<br>";
 	}
      break;
      	
      case "COURSE_ENROLEMENT":
 	while($row = mysqli_fetch_assoc($Search)) { 
-	echo "<br>  Qualification Code: " . $row["CAN_NUM"] . "<br>";
-	echo "Qualification Description: " . $row["CRS_CODE"] . "<br>";
+	echo "<br>  Candidate Number: " . $row["CAN_NUM"] . "<br>";
+	echo "Course Code: " . $row["CRS_CODE"] . "<br>";
 	}
      break;	
      
      case "FILLED_OPENINGS":
 	while($row = mysqli_fetch_assoc($Search)) { 
-	echo "<br>  Qualification Code: " . $row["CAN_NUM"] . "<br>";
-	echo "Qualification Description: " . $row["OPEN_CODE"] . "<br>";
+	echo "<br>  Candidate Number: " . $row["CAN_NUM"] . "<br>";
+	echo "Opening Code: " . $row["OPEN_CODE"] . "<br>";
 	}
      break;
      
      case "SESSION_ENROLEMENT":
 	while($row = mysqli_fetch_assoc($Search)) { 
-	echo "<br>  Qualification Code: " . $row["CAN_NUM"] . "<br>";
-	echo "Qualification Description: " . $row["TS_CODE"] . "<br>";
+	echo "<br>  Candidate Number: " . $row["CAN_NUM"] . "<br>";
+	echo "Traning Session Code: " . $row["TS_CODE"] . "<br>";
 	}
      break;
      
      case "COMPANY_OPENINGS":
 	while($row = mysqli_fetch_assoc($Search)) { 
-	echo "<br>  Qualification Code: " . $row["OPEN_CODE"] . "<br>";
-	echo "Qualification Description: " . $row["CMP_CODE"] . "<br>";
+	echo "<br>  Opening Code: " . $row["OPEN_CODE"] . "<br>";
+	echo "Company Code: " . $row["CMP_CODE"] . "<br>";
 	}
      break;
      	
