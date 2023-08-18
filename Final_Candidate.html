@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TEC Candidate Data Form</title>
+</head>
+<body>
+    <h2>TEC Candidate Data Form</h2>
+    <form  method="get" action="Final.php">
+
+    	
+  	<label for="fname">Candidate First Name:</label>
+	<input type="text" id="CAN_FNAME" name"value1"><br><br>
+	<label for="lname">Candidate Last Name:</label>
+	<input type="text" id="CAN_LNAME" name"value1"><br><br>
+	
+    <h2>Job History</h2>
+	<label for="JH_CODE">Job History Code:</label>
+	<input type="text" id="JH_CODE" name="value1"><br><br>
+	<label for="JH_START_DATE">Job History Start Date:</label>
+	<input type="text" id="JH_START_DATE" name="value1"><br><br>
+	<label for="JH_END_DATE">Job History End Date:</label>
+	<input type="text" id="JH_END_DATE" name="value1"><br><br>
+	<label for="JH_HOURLY_PAY">Session Code to Enroll:</label>
+	<input type="text" id="JH_HOURLY_PAY" name="value1"><br><br>
+
+
+
+
+	<input type="radio" id="JOB_HISTORY" name="value2" value="JOB_HISTORY">job history
+    <h2>Openings Search</h2> 
+	<label for="OP_Code">Opening Code:</label>
+	<input type="text" id="search" name="value1"><br><br>
+	
+
+	<!--<input type="radio" id="COURSE" name="value2" value="COURSE">course
+	<input type="radio" id="TRAINING_SESSIONS" name="value2" value="TRAINING_SESSIONS">training sessions
+	<input type="radio" id="OPENINGS" name="value2" value="OPENINGS">openings-->
+    <h2>Training Sessions Search</h2>
+	<label for="TS_CODE">TS Code:</label>
+	<input type="text" id="TS_CODE" name="value1"><br><br>
+	<input type="button" id="TS_Enroll_View" value="View Current Enrolled Sessions" name="TS_Enroll_View">
+
+	<!--<input type="radio" id="COURSE_ENROLLMENT" name="value2" value="COURSE_ENROLLMENT">course enrollment
+	<input type="radio" id="FILLED_OPENINGS" name="value2" value="FILLED_OPENINGS">filled openings
+	<input type="radio" id="SESSION_ENROLLMENT" name="value2" value="SESSION_ENROLLMENT">session enrollment--> 
+
+    <h2>Training Session Enroll</h2>
+	<label for="TS_Code_Enroll">Session Code to Enroll:</label>
+	<input type="text" id="TS_Code_Enroll" name="value1"><br><br>
+
+    <h2>Course Search</h2>
+	<label for="CS_CODE">Course Code:</label>
+        <input type="text" id="CS_Code" name="value1"><br><br>
+	<input type="button" id="CS_Enroll_View" value="View Current Enrolled Courses" name="CS_Enroll_View">
+
+    <h2>Course Enroll</h2>
+	<label for="CS_Code_Enroll">Course Code to Enroll:</label>
+	<input type="text" id="CS_Code_Enroll" name="value1"><br><br>   
+
+        <input type="submit" value="Submit"><br><br>
+	<input type="reset">
+    </form>
+</body>
+</html>
