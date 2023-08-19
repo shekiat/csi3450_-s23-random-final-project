@@ -28,12 +28,12 @@ $query = "CREATE DATABASE IF NOT EXISTS TEC_COMPANY";
 mysqli_query($con, $query);
 mysqli_close($con);
 
+//-------------Connecting to TEC Company DB-----------------------------
 $server = "localhost";
 $userName = "root";
 $pass = "";
 $db = "TEC_COMPANY";
 
-//-------------Connecting to TEC Company DB-----------------------------
 //create connection
 $con=mysqli_connect($server,$userName,$pass,$db);
 // Check connection
