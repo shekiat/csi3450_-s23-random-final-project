@@ -6,8 +6,14 @@
     <title>TEC Hiring Database</title>
   </head>
   <body>
-  <script src="/WEB/Login_switch.js">
+  <script>
    	
+function toCandidate() {
+  location.replace("/WEB/Final_Candidate.html")
+}
+function toStaff() {
+  location.replace("/WEB/Final_Company.html")
+}
    </script>
    
    <form class="modal-content animate" action="/WEB/Login_switch.php" method="post">
@@ -55,7 +61,7 @@ if($USER_NAME == 'admin')
 	if($PASSWORD == $ADMINPW)
 	{
 		echo "Admin Login Sucess";
-		toAdmin();
+		echo '<script>toAdmin();</script>';
 	}
 	else
 	{
@@ -68,6 +74,7 @@ elseif($USER_NAME = '$CAN_LOGIN')
 	if($PASSWORD == $ADMINPW)
 	{
 		echo "User Login Sucess";
+		echo '<script>toCandidate();</script>';
 	}
 	else
 	{
