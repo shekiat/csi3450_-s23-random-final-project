@@ -11,13 +11,26 @@
 	<input type="text" id="CAN_FNAME" name"value1"><br><br>
 	<label for="lname">Candidate Last Name:</label>
 	<input type="text" id="CAN_LNAME" name"value1"><br><br>
-	    
-    <h2>Search Type</h2>
-	<label for="CF_SEARCH_1">ENTER DATA:</label>
-	<input type="text" id="CF_SEARCH_1" name="CF_SEARCH_1" required><br><br>
+    <h2>Data Type</h2>
+	<input type="radio" id="CF_JH_CODE" name="value2" value="JOB_HISTORY">Job History Search by Name<br><br>
+	<input type="radio" id="CF_OPEN_CODE" name="value2" value="CF_OPEN_CODE">View All Openings<br><br>
+	<input type="radio" id="CF_TS_CODE" name="value2" value="CF_TS_CODE">View all Training Sessions<br><br>
+	<input type="radio" id="CF_TS_ENROLL" name="value2" value="CF_TS_CODE_ENROLL">Training Session Enroll<br><br>
+	<input type="radio" id="CF_CRS_CODE" name="value2" value="CF_CRS_CODE">Course Code<br><br>
+	<input type="radio" id="CF_CRS_ENROLL" name="value2" value="CF_CRS_ENROLL">Course Enrollment<br><br>
 	
-	<label for="CF_SEARCH_2">ENTER DATA:</label>
-	<input type="text" id="CF_SEARCH_2" name="CF_SEARCH_2" required><br><br>
+	<input type="radio" id="CF_SEARCH_PLACE" name="value2" value="CF_SEARCH_PLACE">Search Placements<br><br>
+	<input type="radio" id="CF_SEARCH_OPEN_ENROLL" name="value2" value="CF_SEARCH_ENROLL">Search Opening Enrollment
+	    
+    <h2>Text Entry</h2>
+	<label for="CF_SEARCH_1">ENTER (Job History Start Date/Training Session Code/Course Code):</label>
+	<input type="text" id="CF_SEARCH_1" name="CF_SEARCH_1" ><br><br>
+	
+	<label for="CF_SEARCH_2">ENTER DATA(Job History End Date):</label>
+	<input type="text" id="CF_SEARCH_2" name="CF_SEARCH_2" ><br><br>
+
+	<label for="CF_SEARCH_3">ENTER DATA(Job History Hourly Pay):</label>
+	<input type="text" id="CF_SEARCH_3" name="CF_SEARCH_3" ><br><br>
 	    
 	<!--<input type="radio" id="CF_JH" name="value2" value="JOB_HISTORY">JOB HISTORY CODE<br><br>
 	<input type="radio" id="CF_OPEN_CODE" name="value2" value="CF_OPEN_CODE">OPENING CODE<br><br>
