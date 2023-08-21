@@ -32,17 +32,19 @@
 -->	
     <h2>Job History</h2>
    <form action="/WEB/Final_Candidate.php">
-	<label for="JH_START_DATE">Job History Start Date:</label>
+	
+	<input type='hidden' name='x' value='1'>
+	  <input type="submit" value="Show Your Job History">  
+    </form>	
+    
+    <form action="/WEB/Final_Candidate.php">
+    <br>
+    	<label for="JH_START_DATE">Job History Start Date:</label>
 	<input type="text" id="JH_START_DATE" name="JH_START_DATE"><br><br>
 	<label for="JH_END_DATE">Job History End Date:</label>
 	<input type="text" id="JH_END_DATE" name="JH_END_DATE"><br><br>
 	<label for="JH_HOURLY_PAY">Hourly Pay:</label>
 	<input type="text" id="JH_HOURLY_PAY" name="JH_HOURLY_PAY"><br><br>
-	<input type='hidden' name='x' value='1'>
-	  <input type="submit" value="Search">  
-    </form>	
-    
-    <form action="/WEB/Final_Candidate.php">
     	<input type='hidden' name='x' value='1i'>
 	  <input type="submit" value="Add">
     </form>
@@ -140,23 +142,16 @@
 	<label for="TS_Code_Enroll">Session Code:</label>
 	<input type="text" id="TS_Code_Enroll" name="TS_Code_Enroll"><br><br>
 	<input type='hidden' name='x' value='5i'>
-	<input type="submit" value="Submit">
+	<input type="submit" value="Enroll">
 </form>
+   <h2>Training Session Drop</h2>
+<form action="/WEB/Final_Candidate.php">
 
-    <h2>Course Search</h2>
-<p id = can_crs style="display:none">
-	<label for="CS_CODE">Course Code:</label>
-        <input type="text" id="CS_Code" name="CS_Code"><br><br>
-	<input type="button" id="CS_Enroll_View" value="View Current Enrolled Courses" name="CS_Enroll_View">
-</p>
-
-    <h2>Course Enroll</h2>
-<p id = can_enrol style="display:none">
-	<label for="CS_Code_Enroll">Course Code to Enroll:</label>
-	<input type="text" id="CS_Code_Enroll" name="CS_Code_Enroll"><br><br>   
-
-       
-</p>
+	<label for="TS_Code_Enroll">Session Code:</label>
+	<input type="text" id="TS_Code_Enroll" name="TS_Code_Enroll"><br><br>
+	<input type='hidden' name='x' value='5d'>
+	<input type="submit" value="Drop">
+</form>
 
     </form>
     
@@ -233,10 +228,19 @@ $SQL_TABLE = "$_GET[value1]";
 //echo "<h2>From Catergory $SQL_Search_LNAME. <br>";
 //echo "<h2>With Coulmns $SQL_TABLE <br>";
 
-echo "<h2>switch: $_GET[x] <br>";
+//echo "<h2>switch: $_GET[x] <br>";
 
 
+$Squery = "SELECT * FROM SESSION_ENROLEMENT WHERE CAN_NUM = '1001'";
+$Search = mysqli_query($con,$Squery);
+echo "$Squeryl";
+echo "<h3>Currently Enroled Sessions:<br>";
+while($row = mysqli_fetch_assoc($Search)) { 
+echo "<br> Training Session Code: " . $row["TS_CODE"] . "<br>";
+echo "Candidate Number Code: " . $row["CAN_NUM"] . "<br>";
+}
 
+echo "<h2>Search Results: <br>";
 switch("$_GET[x]")
 {
 
@@ -264,9 +268,9 @@ $Squery = "INSERT INTO JOB_HISTORY(CAN_NUM, JH_START_DATE, JH_END_DATE, JH_HOURL
 $Search = mysqli_query($con,$Squery);
 echo "$Squeryl";
 
-echo "<h2>switch: $_GET[JH_START_DATE] <br>";
-echo "<h2>switch: $_GET[JH_END_DATE] <br>";
-echo "<h2>switch: $_GET[JH_HOURLY_PAY] <br>";
+//echo "switch: $_GET[JH_START_DATE] <br>";
+//echo "switch: $_GET[JH_END_DATE] <br>";
+//echo "switch: $_GET[JH_HOURLY_PAY] <br>";
 
 while($row = mysqli_fetch_assoc($Search)) { 
 	echo "<br>  Job History Code: " . $row["JH_CODE"] . "<br>";
@@ -346,6 +350,21 @@ break;
 case "5i":
 
 $Squery = "INSERT INTO SESSION_ENROLEMENT(CAN_NUM, TS_CODE) VALUES ('1001' ,'$SQL_Search_TS_CODE_ENROLL')";
+$Search = mysqli_query($con,$Squery);
+echo "$Squeryl";
+
+while($row = mysqli_fetch_assoc($Search)) { 
+	echo "<br> Training Session Code: " . $row["TS_CODE"] . "<br>";
+	echo "Candidate Number Code: " . $row["CAN_NUM"] . "<br>";
+	echo "Candidate Number: " . $row["CAN_NUM"] . "<br>";
+	echo "Start Date: " . $row["TS_START_DATE"] . "<br>";
+	echo "End Date: " . $row["TS_END_DATE"] . "<br>";
+}
+break;
+
+case "5d":
+
+$Squery = "DELETE FROM SESSION_ENROLEMENT WHERE CAN_NUM = '1001' AND TS_CODE = '$SQL_Search_TS_CODE_ENROLL'";
 $Search = mysqli_query($con,$Squery);
 echo "$Squeryl";
 
