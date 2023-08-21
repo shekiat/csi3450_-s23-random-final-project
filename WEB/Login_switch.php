@@ -9,7 +9,7 @@
   <script>
    	
 function toCandidate() {
-  location.replace("/WEB/Final_Candidate.html")
+  location.replace("/WEB/Final_Candidate.php")
 }
 function toStaff() {
   location.replace("/WEB/Final_Company.html")
