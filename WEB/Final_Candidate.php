@@ -301,6 +301,22 @@ break;
 
 case "4":
 
+$Squery = "SELECT * FROM COURSE WHERE CRS_CODE = '$SQL_Search_CRS_CODE'";
+$Search = mysqli_query($con,$Squery);
+echo "$Squeryl";
+
+while($row = mysqli_fetch_assoc($Search)) { 
+	echo "<br> Course Code: " . $row["CRS_CODE"] . "<br>";
+	echo "Qualification Code: " . $row["Q_CODE"] . "<br>";
+	echo "Candidate Number: " . $row["CAN_CODE"] . "<br>";
+	echo "Course Fee: $ " . $row["CRS_FEE"] . "<br>";
+	echo "Required Qualification: " . $row["CRS_Q_REQ"] . "<br>";
+}
+break;
+
+
+case "5":
+
 $Squery = "SELECT * FROM TRAINING_SESSIONS WHERE TS_CODE = '$SQL_Search_TS_CODE'";
 $Search = mysqli_query($con,$Squery);
 echo "$Squeryl";
