@@ -31,15 +31,17 @@
 	
 -->	
     <h2>Job History</h2>
-   
+   <form action="/WEB/Final_Candidate.php">
 	<label for="JH_START_DATE">Job History Start Date:</label>
 	<input type="text" id="JH_START_DATE" name="JH_START_DATE"><br><br>
 	<label for="JH_END_DATE">Job History End Date:</label>
 	<input type="text" id="JH_END_DATE" name="JH_END_DATE"><br><br>
 	<label for="JH_HOURLY_PAY">Hourly Pay:</label>
 	<input type="text" id="JH_HOURLY_PAY" name="JH_HOURLY_PAY"><br><br>
-	
-
+	<input type='hidden' name='x' value='1'>
+	  <input type="submit" value="Submit">
+    </form>	  
+<?php ?>
 
 
     <h2>Openings Search</h2> 
@@ -49,6 +51,7 @@
 	<form action="/WEB/Final_Candidate.php">
   <label for="OP_Code">Opening Code:</label>
   <select name="Q_CODE" id="Q_CODE">
+  <option value="">Select a Qualification</option>
     <option value="SEC-45">SEC-45</option>
     <option value="SEC-60">SEC-60</option>
     <option value="CLERK">CLERK</option>
@@ -63,14 +66,16 @@
     <option value="WD-CF">WD-CF</option>
   </select>
   <br><br>
-  <input type="submit" value="Submit">
+  <input type='hidden' name='x' value='2'>
+  <input type="submit" value="Submit"  value="2">
 </form>
 	
-<form action="/WEB/Final_Candidate.php">	
+<form id=1 action="/WEB/Final_Candidate.php">	
     <h2>Course Search</h2>
 
-	<label for="CRS_CODE">Course Code:</label>
+	<label for="Q_CODE">Qualification Code:</label>
         <select name="Q_CODE" id="Q_CODE">
+    <option value="">Select a Qualification</option>
     <option value="SEC-45">SEC-45</option>
     <option value="SEC-60">SEC-60</option>
     <option value="CLERK">CLERK</option>
@@ -83,15 +88,46 @@
     <option value="SYS-2">SYS-2</option>
     <option value="NW-CIS">NW-CIS</option>
     <option value="WD-CF">WD-CF</option>
-  </select><br><br>
-	<input type="button" id="CS_Enroll_View" value="View Current Enrolled Courses" name="CS_Enroll_View">
+      </select><br><br>
+    <input type='hidden' name='x' value='3'>
 	<input type="submit" value="Submit">
+    
+</form>      
+
+  <form action="/WEB/Final_Candidate.php">
+  
+	<br><br>
+	   <label for="CRS_CODE">Course Code:</label>
+        <select name="CRS_CODE" id="CRS_CODE">
+    <option value="">Select a Course</option>
+    <option value="2001">2001</option>
+    <option value="2003">2003</option>
+    <option value="2004">2004</option>
+    <option value="2005">2005</option>
+    <option value="2006">2006</option>
+    <option value="2007">2007</option>
+    <option value="2008">2008</option>
+    <option value="2009">2009</option>
+    <option value="2010">2010</option>
+    <option value="2011">2011</option>
+    <option value="2012">2012</option>
+    <option value="2013">2013</option>
+    	</select><br><br>
+	 <input type='hidden' name='x' value='4'>
+	<input type="submit" value="Submit">
+
 </form>
+
+
+
+
+
 
     <h2>Training Session Enroll</h2>
 <form action="/WEB/Final_Candidate.php">
 	<label for="TS_Code_Enroll">Session Code to Enroll:</label>
 	<input type="text" id="TS_Code_Enroll" name="TS_Code_Enroll"><br><br>
+	<input type='hidden' name='x' value='5'>
 	<input type="submit" value="Submit">
 </form>
 
@@ -185,11 +221,19 @@ $SQL_TABLE = "$_GET[value1]";
 //echo "<h2>From Catergory $SQL_Search_LNAME. <br>";
 //echo "<h2>With Coulmns $SQL_TABLE <br>";
 
-echo "<h2>Course Code: $SQL_Search_CRS_CODE <br>";
+//echo "<h2>switch: $_GET[x] <br>";
+
+
+
+switch("$_GET[x]")
+{
+
+case "1":
 
 $Squery = "SELECT * FROM JOB_HISTORY WHERE CAN_NUM = '$userName'";
 $Search = mysqli_query($con,$Squery);
 echo "$Squeryl";
+
 
 while($row = mysqli_fetch_assoc($Search)) { 
 	echo "<br>  Job History Code: " . $row["OPEN_CODE"] . "<br>";
@@ -199,6 +243,10 @@ while($row = mysqli_fetch_assoc($Search)) {
 	echo "Job End Date: " . $row["OPEN_EST_END_DATE"] . "<br>";
 	echo "Job Hourly Pay: " . $row["OPEN_HOURLY_PAY"] . "<br>";
 }
+break;
+
+
+case "2":
 
 $Squery = "SELECT * FROM OPENINGS WHERE Q_CODE = '$SQL_Search_Q_CODE'";
 $Search = mysqli_query($con,$Squery);
@@ -212,7 +260,9 @@ while($row = mysqli_fetch_assoc($Search)) {
 	echo "Est. End Date: " . $row["OPEN_EST_END_DATE"] . "<br>";
 	echo "Hourly Pay: " . $row["OPEN_HOURLY_PAY"] . "<br>";
 }
+break;
 
+case "3":
 
 $Squery = "SELECT * FROM COURSE WHERE Q_CODE = '$SQL_Search_Q_CODE'";
 $Search = mysqli_query($con,$Squery);
@@ -222,10 +272,12 @@ while($row = mysqli_fetch_assoc($Search)) {
 	echo "<br> Course Code: " . $row["CRS_CODE"] . "<br>";
 	echo "Qualification Code: " . $row["Q_CODE"] . "<br>";
 	echo "Candidate Number: " . $row["CAN_CODE"] . "<br>";
-	echo "Course Fee: " . $row["CRS_FEE"] . "<br>";
+	echo "Course Fee: $ " . $row["CRS_FEE"] . "<br>";
 	echo "Required Qualification: " . $row["CRS_Q_REQ"] . "<br>";
 }
+break;
 
+case "4":
 
 $Squery = "SELECT * FROM TRAINING_SESSIONS WHERE TS_CODE = '$SQL_Search_TS_CODE'";
 $Search = mysqli_query($con,$Squery);
@@ -240,77 +292,9 @@ while($row = mysqli_fetch_assoc($Search)) {
 }
 
 
-
-
-switch("$SQL_TABLE"){
-
-/*     case "QUALIFICATIONS":
-	while($row = mysqli_fetch_assoc($Search)) { 
-	echo "<br>  Qualification Code: " . $row["Q_CODE"] . "<br>";
-	echo "Qualification Description: " . $row["Q_DESC"] . "<br>";
-	}
-     break;
-*/     
-     case "COURSE":
-     	$Squery = "SELECT * FROM $SQL_TABLE WHERE CAN_FNAME LIKE '%$SQL_Search_FNAME%'";
-	$Search = mysqli_query($con,$Squery);
-     
-	while($row = mysqli_fetch_assoc($Search)) { 
-	echo "<br>  Qualification Code: " . $row["Q_CODE"] . "<br>";
-	echo "Candidate Number: " . $row["CAN_NUM"] . "<br>";
-	echo "Course Fee: " . $row["CRS_FEE"] . "<br>";
-	}
-     break;
-     	
-     case "CANDIDATES":
-     	$Squery = "SELECT * FROM $SQL_TABLE WHERE CAN_FNAME LIKE '%$SQL_Search_FNAME%'";
-	$Search = mysqli_query($con,$Squery);
-     	
-	while($row = mysqli_fetch_assoc($Search)) { 
-	echo "<br>  Candidate Code: " . $row["CAN_NUM"] . "<br>";
-	echo "Candidate First Name: " . $row["CAN_FNAME"] . "<br>";
-	echo "Candidate Middle Name: " . $row["CAN_MNAME"] . "<br>";
-	echo "Candidate Last Name: " . $row["CAN_LNAME"] . "<br>";
-	echo "Qualification Code: " . $row["Q_CODE"] . "<br>";
-	echo "Job History Code: " . $row["JH_CODE"] . "<br>";
-	echo "Opening Code: " . $row["OPEN_CODE"] . "<br>";
-	}
-     break;	
-     
-     case "JOB_HISTORY":
-     	$Squery = "SELECT * FROM $SQL_TABLE WHERE CAN_FNAME LIKE '%$SQL_Search_FNAME%'";
-	$Search = mysqli_query($con,$Squery);
-	while($row = mysqli_fetch_assoc($Search)) { 
-	echo "<br>  Job History Code: " . $row["JH_CODE"] . "<br>";
-	echo "Candidate Number: " . $row["CAN_NUM"] . "<br>";
-	echo "Candidate Last Name: " . $row["CAN_LNAME"] . "<br>";
-	echo "Job Start Date: " . $row["JH_START_DATE"] . "<br>";
-	echo "Job End Date: " . $row["JH_END_DATE"] . "<br>";
-	echo "Job Hourly Pay: " . $row["JH_HOURLY_PAY"] . "<br>";
-	echo "Opening Code: " . $row["OPEN_CODE"] . "<br>";
-	}
-     break;
-     	
-     case "TRAINING_SESSIONS":
-	while($row = mysqli_fetch_assoc($Search)) { 
-	echo "<br>  Traning Session Code: " . $row["TS_CODE"] . "<br>";
-	echo "Course Code: " . $row["CRS_CODE"] . "<br>";
-	echo "Candidate Number: " . $row["CAN_NUM"] . "<br>";
-	}
-     break;	
-     
-     case "PLACEMENT":
-	while($row = mysqli_fetch_assoc($Search)) { 
-	echo "<br>  Opening Code: " . $row["Q_CODE"] . "<br>";
-	echo "Candidate Number: " . $row["Q_DESC"] . "<br>";
-	echo "Job History Code: " . $row["Q_CODE"] . "<br>";
-	echo "Placement Total Hours: " . $row["Q_DESC"] . "<br>";
-	echo "Company Name: " . $row["Q_DESC"] . "<br>";
-	}
-     break;
-     
-     	
+break;
 }
+
 $conn->close();
 
     ?>
