@@ -127,11 +127,19 @@
 
 
 
+    <h2>Training Session Search</h2>
+<form action="/WEB/Final_Candidate.php">
+	<label for="TS_Code_Enroll">Session Code:</label>
+	<input type="text" id="TS_Code" name="TS_Code"><br><br>
+	<input type='hidden' name='x' value='5'>
+	<input type="submit" value="Submit">
+</form>
+
     <h2>Training Session Enroll</h2>
 <form action="/WEB/Final_Candidate.php">
-	<label for="TS_Code_Enroll">Session Code to Enroll:</label>
+	<label for="TS_Code_Enroll">Session Code:</label>
 	<input type="text" id="TS_Code_Enroll" name="TS_Code_Enroll"><br><br>
-	<input type='hidden' name='x' value='5'>
+	<input type='hidden' name='x' value='5i'>
 	<input type="submit" value="Submit">
 </form>
 
@@ -216,8 +224,8 @@ $SQL_Search_LNAME = "$_GET[CAN_LNAME]";
 $SQL_Search_Q_CODE = "$_GET[Q_CODE]";
 $SQL_Search_CRS_CODE = "$_GET[CRS_CODE]";
 
-$SQL_Search_TS_CODE = "$_GET[TS_Code_Enroll]";
-
+$SQL_Search_TS_CODE = "$_GET[TS_Code]";
+$SQL_Search_TS_CODE_ENROLL = "$_GET[TS_Code_Enroll]";
 
 $SQL_TABLE = "$_GET[value1]";
 
@@ -252,10 +260,13 @@ break;
 
 case "1i":
 
-$Squery = "INSERT INTO JOB_HISTORY(CAN_NUM, JH_START_DATE, JH_END_DATE, JH_HOURLY_PAY) VALUES('1001', '$_GET[JH_START_DATE]', '$_GET[JH_END_DATE]', '$_GET[JH_HOURLY_PAY]')";
+$Squery = "INSERT INTO JOB_HISTORY(CAN_NUM, JH_START_DATE, JH_END_DATE, JH_HOURLY_PAY) VALUES(1001, '$_GET[JH_START_DATE]', '$_GET[JH_END_DATE]', '$_GET[JH_HOURLY_PAY]')";
 $Search = mysqli_query($con,$Squery);
 echo "$Squeryl";
 
+echo "<h2>switch: $_GET[JH_START_DATE] <br>";
+echo "<h2>switch: $_GET[JH_END_DATE] <br>";
+echo "<h2>switch: $_GET[JH_HOURLY_PAY] <br>";
 
 while($row = mysqli_fetch_assoc($Search)) { 
 	echo "<br>  Job History Code: " . $row["JH_CODE"] . "<br>";
@@ -331,6 +342,24 @@ while($row = mysqli_fetch_assoc($Search)) {
 
 
 break;
+
+case "5i":
+
+$Squery = "INSERT INTO SESSION_ENROLEMENT(CAN_NUM, TS_CODE) VALUES ('1001' ,'$SQL_Search_TS_CODE_ENROLL')";
+$Search = mysqli_query($con,$Squery);
+echo "$Squeryl";
+
+while($row = mysqli_fetch_assoc($Search)) { 
+	echo "<br> Training Session Code: " . $row["TS_CODE"] . "<br>";
+	echo "Candidate Number Code: " . $row["CAN_NUM"] . "<br>";
+	echo "Candidate Number: " . $row["CAN_NUM"] . "<br>";
+	echo "Start Date: " . $row["TS_START_DATE"] . "<br>";
+	echo "End Date: " . $row["TS_END_DATE"] . "<br>";
+}
+
+
+break;
+
 }
 
 $conn->close();
