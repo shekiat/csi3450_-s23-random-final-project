@@ -39,9 +39,13 @@
 	<label for="JH_HOURLY_PAY">Hourly Pay:</label>
 	<input type="text" id="JH_HOURLY_PAY" name="JH_HOURLY_PAY"><br><br>
 	<input type='hidden' name='x' value='1'>
-	  <input type="submit" value="Submit">
-    </form>	  
-<?php ?>
+	  <input type="submit" value="Search">  
+    </form>	
+    
+    <form action="/WEB/Final_Candidate.php">
+    	<input type='hidden' name='x' value='1i'>
+	  <input type="submit" value="Add">
+    </form>
 
 
     <h2>Openings Search</h2> 
@@ -221,7 +225,7 @@ $SQL_TABLE = "$_GET[value1]";
 //echo "<h2>From Catergory $SQL_Search_LNAME. <br>";
 //echo "<h2>With Coulmns $SQL_TABLE <br>";
 
-//echo "<h2>switch: $_GET[x] <br>";
+echo "<h2>switch: $_GET[x] <br>";
 
 
 
@@ -230,18 +234,36 @@ switch("$_GET[x]")
 
 case "1":
 
-$Squery = "SELECT * FROM JOB_HISTORY WHERE CAN_NUM = '$userName'";
+$Squery = "SELECT * FROM JOB_HISTORY WHERE CAN_NUM = '1001'";
 $Search = mysqli_query($con,$Squery);
 echo "$Squeryl";
 
 
 while($row = mysqli_fetch_assoc($Search)) { 
-	echo "<br>  Job History Code: " . $row["OPEN_CODE"] . "<br>";
-	echo "Candidate Number: " . $row["Q_CODE"] . "<br>";
+	echo "<br>  Job History Code: " . $row["JH_CODE"] . "<br>";
+	echo "Candidate Number: " . $row["CAN_NUM"] . "<br>";
 	echo "Candidate Last Name: " . $row["CMP_CODE"] . "<br>";
-	echo "Job Start Date: " . $row["OPEN_START_DATE"] . "<br>";
-	echo "Job End Date: " . $row["OPEN_EST_END_DATE"] . "<br>";
-	echo "Job Hourly Pay: " . $row["OPEN_HOURLY_PAY"] . "<br>";
+	echo "Job Start Date: " . $row["JH_START_DATE"] . "<br>";
+	echo "Job End Date: " . $row["JH_END_DATE"] . "<br>";
+	echo "Job Hourly Pay: " . $row["JH_HOURLY_PAY"] . "<br>";
+}
+break;
+
+
+case "1i":
+
+$Squery = "INSERT INTO JOB_HISTORY(CAN_NUM, JH_START_DATE, JH_END_DATE, JH_HOURLY_PAY) VALUES('1001', '$_GET[JH_START_DATE]', '$_GET[JH_END_DATE]', '$_GET[JH_HOURLY_PAY]')";
+$Search = mysqli_query($con,$Squery);
+echo "$Squeryl";
+
+
+while($row = mysqli_fetch_assoc($Search)) { 
+	echo "<br>  Job History Code: " . $row["JH_CODE"] . "<br>";
+	echo "Candidate Number: " . $row["CAN_NUM"] . "<br>";
+	echo "Candidate Last Name: " . $row["CMP_CODE"] . "<br>";
+	echo "Job Start Date: " . $row["JH_START_DATE"] . "<br>";
+	echo "Job End Date: " . $row["JH_END_DATE"] . "<br>";
+	echo "Job Hourly Pay: " . $row["JH_HOURLY_PAY"] . "<br>";
 }
 break;
 
