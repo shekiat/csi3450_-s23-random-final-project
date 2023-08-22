@@ -7,12 +7,15 @@
   </head>
   <body>
   <script>
+function toAdmin() {
+  location.replace("/WEB/Final_Admin.html") 
+} 
    	
 function toCandidate() {
   location.replace("/WEB/Final_Candidate.php")
 }
 function toStaff() {
-  location.replace("/WEB/Final_Company.html")
+  location.replace("/WEB/Final_Company.php")
 }
    </script>
    
@@ -50,11 +53,11 @@ $PASSWORD = "$_POST[psw]";
 
 $ADMINPW = 1234;
 
-$CAN_LOGIN = "SELECT * FROM CANDIDATES WHERE CAN_NUM LIKE '$USER_NAME'";
-//$CAN_PW = "SELECT * FROM CANDIDATES WHERE CAN_NUM LIKE '$USER_NAME'";
+$CAN_LOGIN = "SELECT CAN_NUM FROM CANDIDATES WHERE CAN_NUM = '$USER_NAME'";
+//$CAN_PW = "SELECT * FROM CANDIDATES WHERE CAN_NUM = '$USER_NAME'";
 
-$STAFF_LOGIN = "SELECT * FROM CANDIDATES WHERE CAN_NUM LIKE '$USER_NAME'";
-//$STAFF_PW = "SELECT * FROM CANDIDATES WHERE CAN_NUM LIKE '$USER_NAME'";
+$STAFF_LOGIN = "SELECT CMP_NUM FROM COMPANIES WHERE CMP_NUM = '$USER_NAME'";
+//$STAFF_PW = "SELECT * FROM COMPANIES WHERE CAN_NUM = '$USER_NAME'";
 
 if($USER_NAME == 'admin')
 {
@@ -69,12 +72,14 @@ if($USER_NAME == 'admin')
 	}
 }
 
-elseif($USER_NAME = '$CAN_LOGIN')
+elseif($USER_NAME = '$CAN_LOGIN' && $USER_NAME != '$STAFF_LOGIN')
 {
 	if($PASSWORD == $ADMINPW)
 	{
 		echo "User Login Sucess";
-		echo '<script>toCandidate();</script>';
+		//echo '<script>toCandidate();</script>';
+		echo '<script>toStaff();</script>';
+		
 	}
 	else
 	{
@@ -82,113 +87,24 @@ elseif($USER_NAME = '$CAN_LOGIN')
 	}
 }
 
-/*elseif($USER_NAME == $STAFF_LOGIN)
+elseif($USER_NAME = '$STAFF_LOGIN')
 {
 	if($PASSWORD == $ADMINPW)
 	{
 		echo "Staff Login Sucess";
+		echo '<script>toStaff();</script>';
 	}
 	else
 	{
 		echo "Login Failed";
 	}
-}*/
+}
 else
 {
 	echo "Login Failed";
 }
 
-/*
-$Squery = "SELECT * FROM CANDIDATES WHERE CAN_NUM LIKE '$USER_NAME'";
-$Search = mysqli_query($con,$Squery);
 
-switch($SQL_TABLE){
-
-     case "QUALIFICATIONS":
-	while($row = mysqli_fetch_assoc($Search)) { 
-	echo "<br>  Qualification Code: " . $row["Q_CODE"] . "<br>";
-	echo "Qualification Description: " . $row["Q_DESC"] . "<br>";
-	}
-     break;
-     
-     case "COURSE":
-	while($row = mysqli_fetch_assoc($Search)) { 
-	echo "<br>  Qualification Code: " . $row["Q_CODE"] . "<br>";
-	echo "Candidate Number: " . $row["CAN_NUM"] . "<br>";
-	echo "Course Fee: " . $row["CRS_FEE"] . "<br>";
-	}
-     break;
-     	
-     case "CANDIDATES":
-	while($row = mysqli_fetch_assoc($Search)) { 
-	echo "<br>  Candidate Code: " . $row["CAN_NUM"] . "<br>";
-	echo "Candidate First Name: " . $row["CAN_FNAME"] . "<br>";
-	echo "Candidate Middle Name: " . $row["CAN_MNAME"] . "<br>";
-	echo "Candidate Last Name: " . $row["CAN_LNAME"] . "<br>";
-	echo "Qualification Code: " . $row["Q_CODE"] . "<br>";
-	echo "Job History Code: " . $row["JH_CODE"] . "<br>";
-	echo "Opening Code: " . $row["OPEN_CODE"] . "<br>";
-	}
-     break;	
-     
-     case "JOB_HISTORY":
-	while($row = mysqli_fetch_assoc($Search)) { 
-	echo "<br>  Job History Code: " . $row["JH_CODE"] . "<br>";
-	echo "Candidate Number: " . $row["CAN_NUM"] . "<br>";
-	echo "Candidate Last Name: " . $row["CAN_LNAME"] . "<br>";
-	echo "Job Start Date: " . $row["JH_START_DATE"] . "<br>";
-	echo "Job End Date: " . $row["JH_END_DATE"] . "<br>";
-	echo "Job Hourly Pay: " . $row["JH_HOURLY_PAY"] . "<br>";
-	echo "Opening Code: " . $row["OPEN_CODE"] . "<br>";
-	}
-     break;
-     	
-     case "TRAINING_SESSIONS":
-	while($row = mysqli_fetch_assoc($Search)) { 
-	echo "<br>  Traning Session Code: " . $row["TS_CODE"] . "<br>";
-	echo "Course Code: " . $row["CRS_CODE"] . "<br>";
-	echo "Candidate Number: " . $row["CAN_NUM"] . "<br>";
-	}
-     break;	
-     
-     case "QUALIFIED_CANIDATES":
-	while($row = mysqli_fetch_assoc($Search)) { 
-	echo "<br>  Candidate Number: " . $row["CAN_NUM"] . "<br>";
-	echo "Qualification Code: " . $row["Q_CODE"] . "<br>";
-	}
-     break;
-     	
-     case "COURSE_ENROLEMENT":
-	while($row = mysqli_fetch_assoc($Search)) { 
-	echo "<br>  Candidate Number: " . $row["CAN_NUM"] . "<br>";
-	echo "Course Code: " . $row["CRS_CODE"] . "<br>";
-	}
-     break;	
-     
-     case "FILLED_OPENINGS":
-	while($row = mysqli_fetch_assoc($Search)) { 
-	echo "<br>  Candidate Number: " . $row["CAN_NUM"] . "<br>";
-	echo "Opening Code: " . $row["OPEN_CODE"] . "<br>";
-	}
-     break;
-     
-     case "SESSION_ENROLEMENT":
-	while($row = mysqli_fetch_assoc($Search)) { 
-	echo "<br>  Candidate Number: " . $row["CAN_NUM"] . "<br>";
-	echo "Traning Session Code: " . $row["TS_CODE"] . "<br>";
-	}
-     break;
-     
-     case "COMPANY_OPENINGS":
-	while($row = mysqli_fetch_assoc($Search)) { 
-	echo "<br>  Opening Code: " . $row["OPEN_CODE"] . "<br>";
-	echo "Company Code: " . $row["CMP_CODE"] . "<br>";
-	}
-     break;
-     	
-}
-$conn->close();
-*/
 
     ?>
   </body>

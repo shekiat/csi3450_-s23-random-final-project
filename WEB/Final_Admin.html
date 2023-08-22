@@ -2,10 +2,10 @@
 <html>
 <head>
 
-    <title>User Data Entry Form</title>
+    <title>Admin Form</title>
 </head>
 <body>
-    <h2>User Data Entry Form</h2>
+    <h2>Admin Form</h2>
     <form  method="get" action="Final.php">
     
   	<label for="name">Coulumn:</label>
@@ -189,12 +189,22 @@
     
         <label for="name">search:</label>
         <input type="text" id="search" name="value1" required><br><br>
-
+	<input type='hidden' name='x' value='1'>
         <input type="submit" value="Submit">
         
     </form>
+     <form  method="get" action="Final.php">
+     
+     <br><br>
+        <label for="name">Raw SQL Query:</label>
+        <input type="text" id="search" name="value1" required><br><br>
+	<input type='hidden' name='x' value='2'>
+        <input type="submit" value="Submit">
+     
+     </form>
     
-      <script src="/WEB/Final.js">
+    
+      <script src="/WEB/Final_Admin.js">
    	
    </script>
    

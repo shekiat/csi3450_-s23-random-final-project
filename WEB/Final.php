@@ -316,6 +316,15 @@ switch($SQL_TABLE){
      break;
      	
 }
+
+if($_GET[x] = 2)
+{
+
+	$Squery = "$_GET[value1]";
+	$Search = mysqli_query($con,$Squery);
+
+}
+
 $conn->close();
 
     ?>
